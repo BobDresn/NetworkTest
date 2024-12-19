@@ -32,9 +32,9 @@ int main()
 {
     //Local server file descriptor
     int server_fd, client_fd = 0;
-
+    server_fd = socket(AF_INET, SOCK_STREAM, 0);
     //Create server socket
-    if( (server_fd = socket(AF_INET, SOCK_STREAM, 0)) != 0 ) 
+    if( server_fd != 0 ) 
     {
         std::cout << "Socket creation failed.\n";
         return 1;
@@ -52,7 +52,7 @@ int main()
    //SERVER
     server_addr.sin_family = AF_INET;
     server_addr.sin_addr.s_addr = INADDR_ANY;
-    server_addr.sin_port = htons(42069);
+    server_addr.sin_port = 0;
 
     //Bind socket to ip and port
     if( bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) != 0 ) 
@@ -98,15 +98,16 @@ int main()
             joinPlayer(openings, players, client_fd);
             std::cout << "Player connected!\n" << client_fd << std::endl;
         }
-        std::cout << "Continue? (y/n) ";
-        char in = ' ';
-        std::cin >> in;
-        if(in != 'y')
-        {
-            close(server_fd);
-            return 1;
-        }
 
+        std::cin.get();
+        // std::cout << "Continue? (y/n) ";
+        // char in = ' ';
+        // std::cin >> in;
+        // if(in != 'y')
+        // {
+        //     close(server_fd);
+        //     return 1;
+        // }
     }
     return 0;
 }

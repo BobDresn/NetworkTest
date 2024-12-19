@@ -4,6 +4,13 @@
 #include <iostream>
 #include <string>
 
+/*
+Socket()
+Connect()
+Send()
+Recv()
+?
+*/
 int main() 
 {
     //Create Socket

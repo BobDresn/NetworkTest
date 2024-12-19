@@ -4,5 +4,6 @@
         "stdexcept": "cpp",
         "string": "cpp",
         "locale": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
